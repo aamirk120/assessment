@@ -1,0 +1,19 @@
+const {DataTypes} = require('sequelize');
+
+module.exports = (sequelize) => {
+    return sequelize.define("Customer", {
+        uuid: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            primaryKey: true
+        },
+        first_name: DataTypes.STRING,
+        last_name: DataTypes.STRING,
+        email: DataTypes.STRING,
+        status: {
+            type: DataTypes.ENUM('active', 'disabled'),
+            defaultValue: 'disabled',
+        },
+    });
+};
